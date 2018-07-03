@@ -13,9 +13,18 @@ const compliments = [
     "You've learned a lot of things, and that's pretty hard to do"
 ];
 
+const insults = [
+    "You suck at coding"
+];
+
 function getRandomComplement() {
     const randomIndex = Math.floor(Math.random() * compliments.length);
     return compliments[randomIndex];
+}
+
+function getRandomInsult() {
+    const randomIndex = Math.floor(Math.random() * insults.length);
+    return insults[randomIndex];
 }
 
 const app = express();
@@ -27,6 +36,13 @@ app.get("/", function(req, res) {
 app.get("/compliment", function(req, res) {
     res.json({
         compliment: getRandomComplement()
+    })
+    .end();
+});
+
+app.get("/insult", function(req, res) {
+    res.json({
+        insult: getRandomInsult()
     })
     .end();
 });
